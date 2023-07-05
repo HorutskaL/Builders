@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'java'
+
+    dependencies {
+        compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+        testImplementation 'junit:junit:4.13.2'
+    }
+}
+
+project(':admin') {
+    dependencies {
+        implementation project(':services')
+        implementation project(':utils')
+        compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+        testImplementation 'junit:junit:4.13.2'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    }
+
+    jar {
+        archiveBaseName.set('admin')
+//        setBuildDir('build/libs')
+    }
+}
+project(':utils') {
+    jar.enabled = false
+}
+project(':services') {
+    jar.enabled = false
+}
+
+
+project(':web') {
+    dependencies {
+        implementation project(':services')
+        implementation project(':utils')
+        compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+        testImplementation 'junit:junit:4.13.2'
+    }
+//    jar.enabled=false
+    war {
+        archiveBaseName = 'web'
+    }
+}
+test {
+    useJUnitPlatform()
+}
+
+
