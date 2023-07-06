@@ -17,7 +17,6 @@ jar {
     archiveBaseName.set('admin')
 }
 
-
 test {
     useJUnitPlatform()
 }
