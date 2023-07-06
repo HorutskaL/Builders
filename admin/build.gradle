@@ -1,27 +1,23 @@
 plugins {
     id 'java'
-    id 'war'
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
 }
 
 repositories {
     mavenCentral()
 }
 
-
 dependencies {
-    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation project(path: ':services')
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
     testImplementation 'junit:junit:4.13.2'
 }
 
-test {
-    useJUnitPlatform()
+jar {
+    archiveBaseName.set('admin')
 }
 
 
+test {
+    useJUnitPlatform()
+}
