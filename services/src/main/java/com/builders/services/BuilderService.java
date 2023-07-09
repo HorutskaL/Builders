@@ -1,12 +1,14 @@
 package com.builders.services;
 
+import com.builders.utils.BuildersUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class BuilderService {
 
-    private final BuilderService BuildersUtil = new BuilderService();
+//    private final BuilderService BuildersUtil = new BuilderService();
 
     public String sayHello() {
         InputStream stream = BuilderService.class.getClassLoader().getResourceAsStream("service_config.properties");
