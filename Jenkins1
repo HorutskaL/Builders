@@ -25,6 +25,7 @@ pipeline {
         stage('Build') {
             when {
                 changeset '**'
+ buildCommand = 'mvn clean install'
             }
             steps {
                 script {
