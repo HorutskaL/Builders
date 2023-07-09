@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Checkout stage
 echo "This stage reads the repository"
 git clone https://github.com/HorutskaL/Builders.git
