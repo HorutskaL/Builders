@@ -8,8 +8,6 @@ import java.util.Properties;
 
 public class BuilderService {
 
-//    private final BuilderService BuildersUtil = new BuilderService();
-
     public String sayHello() {
         InputStream stream = BuilderService.class.getClassLoader().getResourceAsStream("service_config.properties");
         Properties properties = new Properties();
