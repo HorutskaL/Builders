@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     triggers {
-        pollSCM('* * * * *') // Poll SCM every 5 minutes for changes
+        pollSCM('* * * * *')
     }
 
     parameters {
@@ -25,7 +25,7 @@ pipeline {
         stage('Build') {
             when {
                 changeset '**'
- buildCommand = 'mvn clean install'
+ 
             }
             steps {
                 script {
