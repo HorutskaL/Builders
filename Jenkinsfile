@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+            pollSCM('* * * * *')
+        }
+
     parameters {
         choice(
             choices: ['maven', 'gradle'],
@@ -14,10 +18,14 @@ pipeline {
             steps {
                 echo 'This stage reads the repository'
                 git 'https://github.com/HorutskaL/Builders.git'
+                checkout scm
             }
         }
 
         stage('Build') {
+            when {
+                changeset '**'
+                 }
             steps {
                 script {
                     def buildTool = params.BUILD_TOOL
