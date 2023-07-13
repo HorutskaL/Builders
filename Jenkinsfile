@@ -43,8 +43,7 @@ pipeline {
             }
             post {
                 success {
-                    // Automatically apply first promotion (QA) on successful build
-                    script {
+                   script {
                         if (isManualPromotionRequired()) {
                             input message: 'Please approve the deployment to QA.', submitter: 'user', parameters: [booleanParam(defaultValue: false, description: 'Approve Deployment?', name: 'APPROVE_QA')]
                         }
